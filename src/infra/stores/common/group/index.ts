@@ -699,12 +699,16 @@ export class GroupUIStore extends EduUIStoreBase {
       await when(() => this.classroomStore.connectionStore.rtcState === AGRtcState.Idle);
 
       await this.classroomStore.connectionStore.joinRTC();
-
-      await this.classroomStore.connectionStore.checkIn(
+      //@ts-ignore
+      await this.classroomStore.connectionStore._entry(
         EduClassroomConfig.shared.sessionInfo,
         SceneType.Main,
-        'check-in'
       );
+      // await this.classroomStore.connectionStore.checkIn(
+      //   EduClassroomConfig.shared.sessionInfo,
+      //   SceneType.Main,
+      //   'check-in'
+      // );
     } catch (e) {
       this.shareUIStore.addGenericErrorDialog(e as AGError);
     } finally {
