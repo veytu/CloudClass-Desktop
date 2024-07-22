@@ -50,9 +50,13 @@ export class Extension {
 
   @action.bound
   private _handleRegisterCabinetTool(cabinetItem: CabinetItem) {
-    const existed = this._registeredCabinetItems.some(({ id }) => id === cabinetItem.id);
-    if (!existed) {
+    const find = this._registeredCabinetItems.find(item=>item.id === cabinetItem.id)
+    // const existed = this._registeredCabinetItems.some(({ id }) => id === cabinetItem.id);
+    if (!find) {
       this._registeredCabinetItems.push(cabinetItem);
+    }else{
+      find.iconType = cabinetItem.iconType
+      find.name = cabinetItem.name
     }
   }
 
