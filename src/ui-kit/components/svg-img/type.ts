@@ -194,4 +194,5 @@ export enum SvgIconEnum {
   FCR_RECORDING_STOP = 'fcr_recording_stop',
   CAMERA_OFF_MOBILE_NEW = 'camera-off-mobile-new',
   CAMERA_ON_MOBILE_NEW = 'camera-on-mobile-new',
+  ARROW_BACK = 'arrow_back',
 }
