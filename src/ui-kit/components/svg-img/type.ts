@@ -152,6 +152,7 @@ export enum SvgIconEnum {
   UNKNOWN_SIGNAL = 'unknown-signal',
   VIDEO_GALLERY = 'video-gallery',
   VIDEO = 'video',
+  VIDEO_NEW = 'video-new',
   VOTE = 'vote',
   RIGHTPOINT = 'rightpoint',
   WHITEBOARD = 'whiteboard',
@@ -163,6 +164,7 @@ export enum SvgIconEnum {
   ZOOM_OUT = 'zoom-out',
   NONE = 'none',
   MARK = 'mark',
+  MIC_NEW = 'mic-new',
   MATRIX = 'matrix',
   ADD = 'add',
   CLOCK = 'clock',
@@ -194,5 +196,11 @@ export enum SvgIconEnum {
   FCR_RECORDING_STOP = 'fcr_recording_stop',
   CAMERA_OFF_MOBILE_NEW = 'camera-off-mobile-new',
   CAMERA_ON_MOBILE_NEW = 'camera-on-mobile-new',
-  ARROW_BACK = 'arrow_back',
+
+  SCREEN_SHARED = 'screen-shared',
+  CREAMA_ON = 'creama-on',
+  MIC_NOMUTED = 'mic-nomute',
+
+  ARROW_BACK = 'arrow_back'
+
 }

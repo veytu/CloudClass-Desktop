@@ -38,7 +38,11 @@ import { LoadingContainer, GroupLoading } from '@classroom/containers/loading';
 import { TeacherStream } from '@classroom/containers/teacher-stream';
 import { StreamsSwiper } from '@classroom/containers/streams-swiper';
 import { LandscapeToolPanel } from '@classroom/containers/landscape-tool-panel';
+
+import { TopPanel } from '@classroom/containers/top-panel';
+
 import { AllStream } from '@classroom/containers/all-streams';
+
 export const Scenario = observer(() => {
   const {
     classroomStore: {
@@ -174,9 +178,9 @@ export const Scenario = observer(() => {
                   </>
                 ) : (
                   <>
+                    <TopPanel />
                     <GroupInfoPanel />
-
-                    {!isLandscape && <RoomPlaceholder></RoomPlaceholder>}
+                    {/* {!isLandscape && <RoomPlaceholder></RoomPlaceholder>} */}
                     <ScreenShareContainer></ScreenShareContainer>
                     <AllStream isTeacherInClass={false} isBoardWidgetActive={false} 
                     isMediaPlayerWidgetActive={false} isWebViewWidgetActive={false} 
