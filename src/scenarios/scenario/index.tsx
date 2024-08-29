@@ -107,6 +107,7 @@ export const Scenario = observer(() => {
                 className="fct-mobile-main-container"
                 style={{ height: isLandscape ? landscapeInnerHeight : window.innerHeight }}>
                 <div className={isLandscape ? 'fct-mobile-main-top' : ''}>
+                  <TopPanel />
                   <div
                       style={{
                         opacity: currentWidget?.widgetName === 'screenShare' ? 1 : 0,
@@ -179,7 +180,6 @@ export const Scenario = observer(() => {
                   </>
                 ) : (
                   <>
-                    <TopPanel />
                     <GroupInfoPanel />
                     {/* {!isLandscape && <RoomPlaceholder></RoomPlaceholder>} */}
                     {/* <ScreenShareContainer></ScreenShareContainer> */}
@@ -202,13 +202,13 @@ export const Scenario = observer(() => {
                 <div className="landscape-bottom-tools"></div>
               </div>
               {/* {isLandscape && <StreamsSwiper />} */}
-                {isLandscape && <AllStream
-                  isTeacherInClass={isTeacherInClass}
-                  isBoardWidgetActive={isBoardWidgetActive}
-                  isMediaPlayerWidgetActive={isMediaPlayerWidgetActive}
-                  isWebViewWidgetActive={isWebViewWidgetActive}
-                  isScreenSharing={isScreenSharing}
-                ></AllStream>}
+              {isLandscape && <AllStream
+                isTeacherInClass={isTeacherInClass}
+                isBoardWidgetActive={isBoardWidgetActive}
+                isMediaPlayerWidgetActive={isMediaPlayerWidgetActive}
+                isWebViewWidgetActive={isWebViewWidgetActive}
+                isScreenSharing={isScreenSharing}
+              ></AllStream>}
             </>
           )}
         </LayoutOrientation>

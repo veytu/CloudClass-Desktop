@@ -1,15 +1,13 @@
 import { useStore } from '@classroom/hooks/ui-store';
-import { AGError, Scheduler } from 'agora-rte-sdk';
 import { observer } from 'mobx-react';
-import { useEffect, useRef, useState, FC } from 'react';
+import { useRef, FC } from 'react';
 import {
-  AGServiceErrorCode,
+  // AGServiceErrorCode,
+  // ClassState,
   EduClassroomConfig,
   EduRoleTypeEnum,
-  GroupDetail,
+  // GroupDetail,
 } from 'agora-edu-core';
-// import { SvgImg, SvgIconEnum } from '';
-// import { Button } from '';
 import './index.css';
 import { Button, SvgIconEnum, SvgImg, SvgImgMobile } from '@classroom/ui-kit';
 import { useI18n } from 'agora-common-libs';
@@ -19,41 +17,74 @@ type Props = {
 };
 
 export const TopPanel: FC<Props> = observer(() => {
+
+  const {
+    groupUIStore: { leaveSubRoom, teacherGroupUuid },
+    classroomStore: { roomStore: { updateClassState } },
+    // layoutUIStore: { addDialog },
+    shareUIStore: { forceLandscape, isLandscape },
+    leaveClassroom,
+    deviceSettingUIStore: {
+      isCameraDeviceEnabled,
+      isAudioRecordingDeviceEnabled,
+      toggleCameraEnabled,
+      toggleMicEnabled,
+    },
+  } = useStore();
+
   const userUuid = EduClassroomConfig.shared.sessionInfo.userUuid;
   const isTeacher = EduClassroomConfig.shared.sessionInfo.role === EduRoleTypeEnum.teacher;
 
-  const {
-    groupUIStore: { getUserGroupInfo, studentInvite, studentInviteTeacher, leaveSubRoom, teacherGroupUuid },
-    classroomStore,
-    layoutUIStore: { addDialog },
-    shareUIStore: { forceLandscape, isLandscape }, 
-    streamUIStore,
-  } = useStore();
-  const teacherGroupUuidRef = useRef<string | undefined>(teacherGroupUuid);
-  const { userName } = EduClassroomConfig.shared.sessionInfo;
-  const transI18n = useI18n();
-  const { currentSubRoom } = classroomStore.groupStore;
+  const micClas = classNames('top-operation-panel-device-item ', {
+    'top-operation-panel-device-mute': !isAudioRecordingDeviceEnabled
+  });
 
-  const handleLeaveGroup = () => {
-    // leaveClassroom();
+  const cameraClas = classNames('top-operation-panel-device-item ', {
+    'top-operation-panel-device-mute': !isCameraDeviceEnabled
+  });
+
+  // const teacherGroupUuidRef = useRef<string | undefined>(teacherGroupUuid);
+  // const { userName } = EduClassroomConfig.shared.sessionInfo;
+  const transI18n = useI18n();
+
+  const handleLeaveGroup = async () => {
+    // await updateClassState(ClassState.close);
+    leaveClassroom();
   }
+ 
   return (
     <div
       className="top-operation-panel" >
       <div className='top-operation-panel-device'>
-        <div className='top-operation-panel-device-item'>
-          <SvgImgMobile
-            forceLandscape={forceLandscape}
-            landscape={isLandscape}
-            type={SvgIconEnum.MIC_NOMUTED}
-          />
+        <div className={micClas} onClick={toggleMicEnabled}>
+          {isAudioRecordingDeviceEnabled ?
+            <SvgImgMobile
+              forceLandscape={forceLandscape}
+              landscape={isLandscape}
+              type={SvgIconEnum.MIC_NOMUTED}
+            />
+            :
+            <SvgImgMobile
+              forceLandscape={forceLandscape}
+              landscape={isLandscape}
+              type={SvgIconEnum.MIC_MUTED}
+            />
+          }
         </div>
-        <div className='top-operation-panel-device-item'>
-          <SvgImgMobile
-            forceLandscape={forceLandscape}
-            landscape={isLandscape}
-            type={SvgIconEnum.CREAMA_ON}
-          />
+        <div className={cameraClas} onClick={toggleCameraEnabled}>
+          {isCameraDeviceEnabled ?
+            <SvgImgMobile
+              forceLandscape={forceLandscape}
+              landscape={isLandscape}
+              type={SvgIconEnum.CREAMA_ON}
+            />
+            :
+            <SvgImgMobile
+              forceLandscape={forceLandscape}
+              landscape={isLandscape}
+              type={SvgIconEnum.CREAMA_OFF}
+            />
+          }
         </div>
       </div>
       <div className='top-operation-panel-screen-shared'>

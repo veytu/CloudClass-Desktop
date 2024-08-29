@@ -199,7 +199,9 @@ export enum SvgIconEnum {
 
   SCREEN_SHARED = 'screen-shared',
   CREAMA_ON = 'creama-on',
+  CREAMA_OFF = 'creama-off',
   MIC_NOMUTED = 'mic-nomute',
+  MIC_MUTED = 'mic-mute',
 
   ARROW_BACK = 'arrow_back'
 
