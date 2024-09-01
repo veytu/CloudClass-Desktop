@@ -203,6 +203,9 @@ export enum SvgIconEnum {
   MIC_NOMUTED = 'mic-nomute',
   MIC_MUTED = 'mic-mute',
 
-  ARROW_BACK = 'arrow_back'
+  ARROW_BACK = 'arrow_back',
+  ICON_ROLE_TYPE_TEACHER='icon_role_type_teacher',
+  ICON_SCREEN_SHARE='icon_screen_share',
+  HANDS_UP_NEW = 'hands-up-new',
 
 }
