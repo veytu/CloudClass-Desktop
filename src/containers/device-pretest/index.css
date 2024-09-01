@@ -4,6 +4,16 @@
   padding-top: 85px;
 }
 
+@media screen and (min-width: 375px) {
+  .fcr-bg-background {
+    background: var(--background-dark, #151515);
+  }
+  .fcr-pretest {
+    width: 375px;
+    height: 100vh;
+  }
+}
+
 .fcr-pretest .fcr-pretest__video-portal {
   padding: 0 16px;
   display: flex;
@@ -11,11 +21,6 @@
   justify-content: space-between;
   color: #FEFEFE;
   gap: 70px;
-}
-
-.fcr-pretest .fcr-pretest__video-portal .fcr-pretest__video-portal-item {
-  /* flex: 1; */
-
 }
 
 .fcr-pretest__video-portal__video_control-wrapped {
@@ -92,7 +97,7 @@
 }
 
 .fcr-pretest__video-portal__video .fcr-video-player-wrapper {
-  width: 343px;
+  width: 100%;
   height: 227px;
   @apply fcr-bg-4;
   position: relative;
@@ -107,8 +112,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--color-windowview, #2C2C2C);
 }
-
+ 
 /* 加入课程 */
 .fcr-pretest .fcr-pretest__video-portal .fcr-pretest__video-portal__footer {
   text-align: center;
