@@ -99,27 +99,27 @@ export const Scenario = observer(() => {
             'fcr-mobile-landscape-container': isLandscape && !forceLandscape,
           })}
           direction={isLandscape ? 'row' : 'col'}>
+          <TopPanel />
           {state === ClassState.close ? (
             <AfterClassDialog></AfterClassDialog>
           ) : (
             <>
               <div
-                className="fct-mobile-main-container"
+                className={isLandscape ? "fct-mobile-main-container fct-mobile-main-container-landscape" : "fct-mobile-main-container"}
                 style={{ height: isLandscape ? landscapeInnerHeight : window.innerHeight }}>
                 <div className={isLandscape ? 'fct-mobile-main-top' : ''}>
-                  <TopPanel />
                   <div
-                      style={{
-                        opacity: currentWidget?.widgetName === 'screenShare' ? 1 : 0,
-                        transition: 'opacity 0.2s linear',
-                        height:
-                          currentWidget?.widgetName === 'screenShare'
-                            ? isLandscape
-                              ? '100%'
-                              : 'auto'
-                            : 0,
-                      }}>
-                      <ScreenShareContainer key={'sceenShare'}></ScreenShareContainer>
+                    style={{
+                      opacity: currentWidget?.widgetName === 'screenShare' ? 1 : 0,
+                      transition: 'opacity 0.2s linear',
+                      height:
+                        currentWidget?.widgetName === 'screenShare'
+                          ? isLandscape
+                            ? '100%'
+                            : 'auto'
+                          : 0,
+                    }}>
+                    <ScreenShareContainer key={'sceenShare'}></ScreenShareContainer>
                   </div>
                   <div
                     style={{
@@ -159,7 +159,7 @@ export const Scenario = observer(() => {
                           : 0,
                     }}>
                     {' '}
-                    <WebView key={'webview'} />
+                    {/* <WebView key={'webview'} /> */}
                   </div>
                 </div>
                 {isLandscape ? (
@@ -176,16 +176,16 @@ export const Scenario = observer(() => {
                           {transI18n('fcr_student_no_teacher_show')}
                         </div>
                       )}
-                  
+
                   </>
                 ) : (
                   <>
                     <GroupInfoPanel />
                     {/* {!isLandscape && <RoomPlaceholder></RoomPlaceholder>} */}
                     {/* <ScreenShareContainer></ScreenShareContainer> */}
-                    <AllStream isTeacherInClass={false} isBoardWidgetActive={false} 
-                    isMediaPlayerWidgetActive={false} isWebViewWidgetActive={false} 
-                    isScreenSharing={false}></AllStream>
+                    <AllStream isTeacherInClass={false} isBoardWidgetActive={false}
+                      isMediaPlayerWidgetActive={false} isWebViewWidgetActive={false}
+                      isScreenSharing={false}></AllStream>
                     {!isLandscape && !groupInfo && <RoomInfo></RoomInfo>}
                     <HandsUpActionSheet></HandsUpActionSheet>
 
@@ -199,16 +199,17 @@ export const Scenario = observer(() => {
                 <DialogContainer></DialogContainer>
                 <ToastContainer></ToastContainer>
                 <ClassRoomDialogContainer></ClassRoomDialogContainer>
-                <div className="landscape-bottom-tools"></div>
+                <div className={isLandscape ? "landscape-bottom-tools landscape-bottom-tools-horizontal" : 'landscape-bottom-tools landscape-bottom-tools-vertical'}  ></div>
+                {isLandscape && <AllStream
+                  isTeacherInClass={isTeacherInClass}
+                  isBoardWidgetActive={isBoardWidgetActive}
+                  isMediaPlayerWidgetActive={isMediaPlayerWidgetActive}
+                  isWebViewWidgetActive={isWebViewWidgetActive}
+                  isScreenSharing={isScreenSharing}
+                ></AllStream>}
               </div>
               {/* {isLandscape && <StreamsSwiper />} */}
-              {isLandscape && <AllStream
-                isTeacherInClass={isTeacherInClass}
-                isBoardWidgetActive={isBoardWidgetActive}
-                isMediaPlayerWidgetActive={isMediaPlayerWidgetActive}
-                isWebViewWidgetActive={isWebViewWidgetActive}
-                isScreenSharing={isScreenSharing}
-              ></AllStream>}
+
             </>
           )}
         </LayoutOrientation>
