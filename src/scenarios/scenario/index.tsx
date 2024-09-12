@@ -140,9 +140,7 @@ export const Scenario = observer(() => {
                       transition: 'opacity 0.2s linear',
                       height:
                         currentWidget?.widgetName === 'screenShare'
-                          ? isLandscape
-                            ? '100%'
-                            : "calc(100vh - 48px - 57px - 96px)"
+                          ? '100%'
                           : 0,
                     }}>
                     <ScreenShareContainer key={'sceenShare'}></ScreenShareContainer>
@@ -153,9 +151,7 @@ export const Scenario = observer(() => {
                       transition: 'opacity 0.2s linear',
                       height:
                         currentWidget?.widgetName === 'netlessBoard'
-                          ? isLandscape
-                            ? '100%'
-                            : "calc(100vh - 48px - 57px - 96px)"
+                          ? '100%'
                           : 0,
                     }}>
                     <Whiteboard key={'board'} />
@@ -166,9 +162,7 @@ export const Scenario = observer(() => {
                       transition: 'opacity 0.2s linear',
                       height:
                         currentWidget?.widgetName === 'mediaPlayer'
-                          ? isLandscape
-                            ? '100%'
-                            : "calc(100vh - 48px - 57px - 96px)"
+                          ? '100%'
                           : 0,
                     }}>
                     <MadiaPlayer key={'media'} />
@@ -179,9 +173,7 @@ export const Scenario = observer(() => {
                       transition: 'opacity 0.2s linear',
                       height:
                         currentWidget?.widgetName === 'webView'
-                          ? isLandscape
-                            ? '100%'
-                            : "calc(100vh - 48px - 57px - 96px)"
+                          ? '100%'
                           : 0,
                     }}>
                     {' '}
