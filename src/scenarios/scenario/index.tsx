@@ -40,9 +40,7 @@ import { StreamsSwiper } from '@classroom/containers/streams-swiper';
 import { LandscapeToolPanel } from '@classroom/containers/landscape-tool-panel';
 
 import { TopPanel } from '@classroom/containers/top-panel';
-
 import { AllStream } from '@classroom/containers/all-streams';
-
 export const Scenario = observer(() => {
   const {
     classroomStore: {
