@@ -997,12 +997,31 @@ export class GroupUIStore extends EduUIStoreBase {
         },
       ),
     );
+    this._disposers.push(
+      reaction(
+        () => this.groupState,
+        (data) => {
+          const isTeacher = [EduRoleTypeEnum.teacher, EduRoleTypeEnum.assistant].includes(
+            EduClassroomConfig.shared.sessionInfo.role,
+          );
+          if (data === GroupState.CLOSE && !isTeacher) {
+            //移除当前页面所有弹窗
+            this._dialogsMap.values().forEach(element => {
+              if(element){
+                this.getters.classroomUIStore.layoutUIStore.deleteDialog(element);
+              }
+            });
+          }
+        },
+      ),
+    );
 
     EduEventCenter.shared.onClassroomEvents(this._handleClassroomEvent);
   }
 
   @bound
   private async _handleClassroomEvent(type: AgoraEduClassroomEvent, args: any) {
+    debugger
     if (type === AgoraEduClassroomEvent.JoinSubRoom) {
       this._joinSubRoom();
     }
