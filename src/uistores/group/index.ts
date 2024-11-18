@@ -1005,12 +1005,13 @@ export class GroupUIStore extends EduUIStoreBase {
             EduClassroomConfig.shared.sessionInfo.role,
           );
           if (data === GroupState.CLOSE && !isTeacher) {
-            //移除当前页面所有弹窗
+            //因为当前map只存了邀请弹窗，所以移除map中的所有弹窗
             this._dialogsMap.values().forEach(element => {
               if(element){
                 this.getters.classroomUIStore.layoutUIStore.deleteDialog(element);
               }
             });
+            this._dialogsMap.clear()
           }
         },
       ),
