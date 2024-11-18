@@ -52,7 +52,9 @@
   pointer-events: none;
 }
 
-.whiteboard-mobile-container .widget-slot-board {}
+.whiteboard-mobile-container .widget-slot-board {
+  aspect-ratio: 880/406;
+}
 
 .widget-slot-board .netless-whiteboard-wrapper {
   /* height: 100%; */

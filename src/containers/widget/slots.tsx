@@ -87,7 +87,7 @@ export const Whiteboard = observer(function Board() {
       <div
         onClick={toggleLandscapeToolBarVisible}
         style={{
-          height: isLandscape ? '100%' : boardContainerHeight,
+          height: isLandscape ? 'unset' : boardContainerHeight,
           zIndex: ComponentLevelRules.Level0,
           // width: landscapeBoardSize.width,
           width: '100%',
