@@ -1021,7 +1021,6 @@ export class GroupUIStore extends EduUIStoreBase {
 
   @bound
   private async _handleClassroomEvent(type: AgoraEduClassroomEvent, args: any) {
-    debugger
     if (type === AgoraEduClassroomEvent.JoinSubRoom) {
       this._joinSubRoom();
     }
