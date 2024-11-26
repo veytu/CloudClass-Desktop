@@ -90,7 +90,9 @@ export const Whiteboard = observer(function Board() {
           height: isLandscape ? 'unset' : boardContainerHeight,
           zIndex: ComponentLevelRules.Level0,
           // width: landscapeBoardSize.width,
-          width: '100%',
+          width: isLandscape ? 'unset' : '100%',
+          maxHeight: isLandscape ? '100%' : 'unset',
+          maxWidth: isLandscape ? '100%' : 'unset',
           // backgroundColor: isLandscape ? 'rgba(35, 37, 41, 1)' : '',
         }}
         className="widget-slot-board"

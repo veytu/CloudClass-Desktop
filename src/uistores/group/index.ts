@@ -1006,17 +1006,16 @@ export class GroupUIStore extends EduUIStoreBase {
           );
           if (data === GroupState.CLOSE && !isTeacher) {
             //因为当前map只存了邀请弹窗，所以移除map中的所有弹窗
-            this._dialogsMap.values().forEach(element => {
-              if(element){
-                this.getters.classroomUIStore.layoutUIStore.deleteDialog(element);
+            for (const [, value] of this._dialogsMap.entries()) {
+              if(value){
+                this.getters.classroomUIStore.layoutUIStore.deleteDialog(value);
               }
-            });
+            }
             this._dialogsMap.clear()
           }
         },
       ),
     );
-
     EduEventCenter.shared.onClassroomEvents(this._handleClassroomEvent);
   }
 
